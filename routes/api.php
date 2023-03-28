@@ -7,17 +7,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function () {
 
-    Route::post('login', [AdminController::class, 'loginAdmin']);
+    Route::post('signin', [AdminController::class, 'loginAdmin']);
 
     Route::middleware(['auth:sanctum', 'ability:superAdmin'])->group(function () {
-        Route::post('/create', [AdminController::class, 'createAdmin']);
+        Route::post('create', [AdminController::class, 'createAdmin']);
     });
 
     Route::prefix('user')->group(function () {
-        Route::post('/create', [UserController::class, 'createUser']);
+        Route::post('create', [UserController::class, 'createUser']);
     });
 });
 
 Route::prefix('user')->group(function () {
-    Route::post('login', [UserController::class, 'loginUser']);
+    Route::post('signin', [UserController::class, 'loginUser']);
 });
