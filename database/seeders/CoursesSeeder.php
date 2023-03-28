@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Courses;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class CoursesSeeder extends Seeder
@@ -12,6 +13,5 @@ class CoursesSeeder extends Seeder
      */
     public function run(): void
     {
-        //
     }
 }
