@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,6 +12,7 @@ Route::prefix('admin')->group(function () {
 
     Route::middleware(['auth:sanctum', 'ability:superAdmin'])->group(function () {
         Route::post('create', [AdminController::class, 'createAdmin']);
+        Route::post('program/create', [ProgramController::class, 'createProgram']);
     });
 
     Route::prefix('user')->group(function () {
@@ -21,3 +23,6 @@ Route::prefix('admin')->group(function () {
 Route::prefix('user')->group(function () {
     Route::post('signin', [UserController::class, 'loginUser']);
 });
+
+Route::get('/programs', [ProgramController::class, 'fetchPrograms']);
+Route::get('/program/{id}', [ProgramController::class, 'fetchProgram']);
