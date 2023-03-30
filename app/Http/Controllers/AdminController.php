@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateAdminRequest;
 use App\Models\Admin;
+use App\Models\Courses;
+use App\Models\Program;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -57,5 +60,20 @@ class AdminController extends Controller
         ];
 
         return SuccessResponse('Admin Logged In Successfully', $responseData);
+    }
+
+    public function adminStats()
+    {
+        $users = User::count();
+        $programs = Program::count();
+        $courses = Courses::count();
+
+        $response = array(
+            'Users' => $users,
+            'Programs' => $programs,
+            'Courses' => $courses
+        );
+
+        return SuccessResponse('', $response);
     }
 }

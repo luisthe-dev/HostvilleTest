@@ -13,6 +13,7 @@ Route::prefix('admin')->group(function () {
     Route::middleware(['auth:sanctum', 'ability:superAdmin'])->group(function () {
         Route::post('create', [AdminController::class, 'createAdmin']);
         Route::post('program/create', [ProgramController::class, 'createProgram']);
+        Route::get('stats', [AdminController::class, 'adminStats']);
     });
 
     Route::prefix('user')->group(function () {
