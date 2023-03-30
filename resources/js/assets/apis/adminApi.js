@@ -43,3 +43,28 @@ export const fetchSiteStats = async () => {
 
     return responseData;
 };
+
+export const fetchSiteUsers = async (pageNumber) => {
+    let responseData = { status: 0 };
+    try {
+        const apiResponse = await HostVilleApi.get(
+            `/admin/users?page=${pageNumber}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${
+                        JSON.parse(localStorage.getItem("HostvilleAdmin"))
+                            .access_token
+                    }`,
+                },
+            }
+        );
+        if (apiResponse.status === 200) {
+            responseData["status"] = 1;
+            responseData["data"] = apiResponse.data;
+        }
+    } catch (err) {
+        responseData["message"] = err.response.data.message;
+    }
+
+    return responseData;
+};
