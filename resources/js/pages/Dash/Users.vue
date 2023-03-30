@@ -1,6 +1,7 @@
 <template>
     <div class="tablecontainer">
         <h3>Users</h3>
+        <RouterLink to="/dashboard/users/add"> &plus; Create User </RouterLink>
         <table>
             <thead>
                 <tr>
@@ -49,7 +50,6 @@ export default {
         async fetchUsers(pageNumber) {
             if (pageNumber === 0) return;
             const responseData = await fetchSiteUsers(pageNumber);
-            console.log(responseData)
             this.tableData = responseData.data.data
             if (pageNumber > this.navData.currentPage) {
                 this.navData.previousPage = this.navData.currentPage
@@ -59,7 +59,6 @@ export default {
                 this.navData.previousPage = (this.navData.previousPage - 1)
             }
             this.navData.nextPage = responseData.data.next_page_url === null ? null : Number(responseData.data.next_page_url.split('=')[1])
-            console.log(responseData)
         }
     }
 }
@@ -80,6 +79,18 @@ export default {
     gap: 20px;
 }
 
+.tablecontainer a {
+    font-weight: 300;
+    font-size: 24px;
+    background: #5676cd;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+}
+
 table {
     align-items: center;
     text-align: center;
@@ -93,32 +104,5 @@ th {
 td {
     padding: 18px 0;
     border-bottom: 1px solid #12121254;
-}
-
-.navigation {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 20px;
-}
-
-.navigation button {
-    background: #ffffff;
-    box-shadow: 0px 0px 3px 2px #acacac65;
-    border: 1px solid #347896;
-    padding: 6px 12px;
-    font-weight: 500;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 8px;
-}
-
-.navigation button.hidden {
-    display: none;
-}
-
-.navigation button:hover {
-    background: #adadad25;
 }
 </style>

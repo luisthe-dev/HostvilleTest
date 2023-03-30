@@ -6,6 +6,8 @@ import SignIn from "./pages/Auth/SignIn.vue";
 import Dash from "./pages/Dash/Index.vue";
 import DashHome from "./pages/Dash/Home.vue";
 import DashUsers from "./pages/Dash/Users.vue";
+import AddUser from "./pages/Dash/AddUsers.vue";
+import DashPrograms from "./pages/Dash/Programs.vue";
 
 const routes = [
     { path: "/", component: SignIn, name: "SignIn" },
@@ -15,6 +17,8 @@ const routes = [
         children: [
             { path: "", component: DashHome },
             { path: "users", component: DashUsers },
+            { path: "users/add", component: AddUser },
+            { path: "programs", component: DashPrograms },
         ],
     },
 ];

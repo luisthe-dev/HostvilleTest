@@ -81,4 +81,9 @@ class AdminController extends Controller
     {
         return User::paginate(10);
     }
+
+    public function getPrograms()
+    {
+        return Program::paginate(10);
+    }
 }
