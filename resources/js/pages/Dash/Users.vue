@@ -1,13 +1,13 @@
 <template>
     <div>
-        Users
+        <h6>Users</h6>
     </div>
 </template>
 
 <script>
-    export default{
+export default {
 
-    }
+}
 </script>
 
 <style scoped></style>

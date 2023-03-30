@@ -14,6 +14,7 @@ Route::prefix('admin')->group(function () {
         Route::post('create', [AdminController::class, 'createAdmin']);
         Route::post('program/create', [ProgramController::class, 'createProgram']);
         Route::get('stats', [AdminController::class, 'adminStats']);
+        Route::get('users', [AdminController::class, 'getUsers']);
     });
 
     Route::prefix('user')->group(function () {

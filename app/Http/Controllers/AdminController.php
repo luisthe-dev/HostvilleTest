@@ -76,4 +76,9 @@ class AdminController extends Controller
 
         return SuccessResponse('', $response);
     }
+
+    public function getUsers()
+    {
+        return User::paginate(10);
+    }
 }
